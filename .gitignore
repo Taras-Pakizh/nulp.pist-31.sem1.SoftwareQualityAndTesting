@@ -1,0 +1,10 @@
+*/.vs/
+*/obj/
+lab_1/app/.vs/
+lab_1/app/app/obj/
+lab_1/app/appTests/bin/
+lab_1/app/app/bin/
+lab_1/app/appTests/obj/
+lab_1/app/packages/
+lab_1/app/UnitTestProject/bin/
+lab_1/app/UnitTestProject/obj/
