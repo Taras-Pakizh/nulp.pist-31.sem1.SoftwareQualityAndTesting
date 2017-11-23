@@ -1,0 +1,1462 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="course_work_Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="id_category" />
+          </Key>
+          <Property Name="id_category" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" />
+          <Property Name="description" Type="text" />
+        </EntityType>
+        <EntityType Name="city">
+          <Key>
+            <PropertyRef Name="id_city" />
+          </Key>
+          <Property Name="id_city" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="client">
+          <Key>
+            <PropertyRef Name="id_client" />
+          </Key>
+          <Property Name="id_client" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="person" Type="int" Nullable="false" />
+          <Property Name="registration_date" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="component">
+          <Key>
+            <PropertyRef Name="id_component" />
+          </Key>
+          <Property Name="id_component" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="description" Type="text" Nullable="false" />
+          <Property Name="category" Type="int" Nullable="false" />
+          <Property Name="producer" Type="int" Nullable="false" />
+          <Property Name="price" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="component_install">
+          <Key>
+            <PropertyRef Name="id_component_install" />
+          </Key>
+          <Property Name="id_component_install" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="order_component" Type="int" Nullable="false" />
+          <Property Name="work_type" Type="int" Nullable="false" />
+          <Property Name="status" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="employee" Type="int" Nullable="false" />
+          <Property Name="end_work_date" Type="datetime" Nullable="false" />
+          <Property Name="warranty" Type="int" Nullable="false" />
+          <Property Name="transmission_component_install" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="component_on_firm">
+          <Key>
+            <PropertyRef Name="id_component_on_firm" />
+          </Key>
+          <Property Name="id_component_on_firm" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="component" Type="int" Nullable="false" />
+          <Property Name="firm" Type="int" Nullable="false" />
+          <Property Name="component_count" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="delivery">
+          <Key>
+            <PropertyRef Name="id_delivery" />
+          </Key>
+          <Property Name="id_delivery" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="address" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="delivery_type" Type="int" Nullable="false" />
+          <Property Name="transmission_date" Type="datetime" Nullable="false" />
+          <Property Name="arrival_date" Type="datetime" Nullable="false" />
+          <Property Name="is_received" Type="int" Nullable="false" />
+          <Property Name="price" Type="money" Nullable="false" />
+          <Property Name="order" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="delivery_type">
+          <Key>
+            <PropertyRef Name="id_delivery_type" />
+          </Key>
+          <Property Name="id_delivery_type" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="id_employee" />
+          </Key>
+          <Property Name="id_employee" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="person" Type="int" Nullable="false" />
+          <Property Name="position" Type="int" Nullable="false" />
+          <Property Name="firm" Type="int" Nullable="false" />
+          <Property Name="experience" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="firm">
+          <Key>
+            <PropertyRef Name="id_firm" />
+          </Key>
+          <Property Name="id_firm" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="city" Type="int" Nullable="false" />
+          <Property Name="address" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="phone" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="order_component">
+          <Key>
+            <PropertyRef Name="id_order_component" />
+          </Key>
+          <Property Name="id_order_component" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="order" Type="int" Nullable="false" />
+          <Property Name="component" Type="int" Nullable="false" />
+          <Property Name="component_count" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ordr">
+          <Key>
+            <PropertyRef Name="id_ordr" />
+          </Key>
+          <Property Name="id_ordr" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="client" Type="int" Nullable="false" />
+          <Property Name="employee" Type="int" Nullable="false" />
+          <Property Name="pc" Type="int" Nullable="false" />
+          <Property Name="creation_date" Type="datetime" Nullable="false" />
+          <Property Name="is_completed" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pc">
+          <Key>
+            <PropertyRef Name="id_pc" />
+          </Key>
+          <Property Name="id_pc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pc_type" Type="int" Nullable="false" />
+          <Property Name="producer" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="description" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pc_type">
+          <Key>
+            <PropertyRef Name="id_pc_type" />
+          </Key>
+          <Property Name="id_pc_type" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="person">
+          <Key>
+            <PropertyRef Name="id_person" />
+          </Key>
+          <Property Name="id_person" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="first_name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="last_name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="phone" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="address" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="position">
+          <Key>
+            <PropertyRef Name="id_position" />
+          </Key>
+          <Property Name="id_position" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="producer">
+          <Key>
+            <PropertyRef Name="id_produced" />
+          </Key>
+          <Property Name="id_produced" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="transmission_component_install">
+          <Key>
+            <PropertyRef Name="id_transmission_component_install" />
+          </Key>
+          <Property Name="id_transmission_component_install" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="component_on_firm" Type="int" Nullable="false" />
+          <Property Name="transmission_date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="warranty">
+          <Key>
+            <PropertyRef Name="id_warranty" />
+          </Key>
+          <Property Name="id_warranty" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="begin_date" Type="date" Nullable="false" />
+          <Property Name="duration" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="work_type">
+          <Key>
+            <PropertyRef Name="id_work_type" />
+          </Key>
+          <Property Name="id_work_type" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="price" Type="money" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__client__person__345EC57D">
+          <End Role="person" Type="Self.person" Multiplicity="1" />
+          <End Role="client" Type="Self.client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="person">
+              <PropertyRef Name="id_person" />
+            </Principal>
+            <Dependent Role="client">
+              <PropertyRef Name="person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__component___firm__3BFFE745">
+          <End Role="firm" Type="Self.firm" Multiplicity="1" />
+          <End Role="component_on_firm" Type="Self.component_on_firm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="firm">
+              <PropertyRef Name="id_firm" />
+            </Principal>
+            <Dependent Role="component_on_firm">
+              <PropertyRef Name="firm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__component__categ__3552E9B6">
+          <End Role="category" Type="Self.category" Multiplicity="1" />
+          <End Role="component" Type="Self.component" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="id_category" />
+            </Principal>
+            <Dependent Role="component">
+              <PropertyRef Name="category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__component__compo__3B0BC30C">
+          <End Role="component" Type="Self.component" Multiplicity="1" />
+          <End Role="component_on_firm" Type="Self.component_on_firm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="component">
+              <PropertyRef Name="id_component" />
+            </Principal>
+            <Dependent Role="component_on_firm">
+              <PropertyRef Name="component" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__component__emplo__382F5661">
+          <End Role="employee" Type="Self.employee" Multiplicity="1" />
+          <End Role="component_install" Type="Self.component_install" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="id_employee" />
+            </Principal>
+            <Dependent Role="component_install">
+              <PropertyRef Name="employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__component__order__39237A9A">
+          <End Role="order_component" Type="Self.order_component" Multiplicity="1" />
+          <End Role="component_install" Type="Self.component_install" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="order_component">
+              <PropertyRef Name="id_order_component" />
+            </Principal>
+            <Dependent Role="component_install">
+              <PropertyRef Name="order_component" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__component__produ__36470DEF">
+          <End Role="producer" Type="Self.producer" Multiplicity="1" />
+          <End Role="component" Type="Self.component" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="producer">
+              <PropertyRef Name="id_produced" />
+            </Principal>
+            <Dependent Role="component">
+              <PropertyRef Name="producer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__component__work___3A179ED3">
+          <End Role="work_type" Type="Self.work_type" Multiplicity="1" />
+          <End Role="component_install" Type="Self.component_install" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="work_type">
+              <PropertyRef Name="id_work_type" />
+            </Principal>
+            <Dependent Role="component_install">
+              <PropertyRef Name="work_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__delivery__delive__3CF40B7E">
+          <End Role="delivery_type" Type="Self.delivery_type" Multiplicity="1" />
+          <End Role="delivery" Type="Self.delivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="delivery_type">
+              <PropertyRef Name="id_delivery_type" />
+            </Principal>
+            <Dependent Role="delivery">
+              <PropertyRef Name="delivery_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__employee__firm__3DE82FB7">
+          <End Role="firm" Type="Self.firm" Multiplicity="1" />
+          <End Role="employee" Type="Self.employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="firm">
+              <PropertyRef Name="id_firm" />
+            </Principal>
+            <Dependent Role="employee">
+              <PropertyRef Name="firm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__employee__person__3EDC53F0">
+          <End Role="person" Type="Self.person" Multiplicity="1" />
+          <End Role="employee" Type="Self.employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="person">
+              <PropertyRef Name="id_person" />
+            </Principal>
+            <Dependent Role="employee">
+              <PropertyRef Name="person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__employee__positi__3FD07829">
+          <End Role="position" Type="Self.position" Multiplicity="1" />
+          <End Role="employee" Type="Self.employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="position">
+              <PropertyRef Name="id_position" />
+            </Principal>
+            <Dependent Role="employee">
+              <PropertyRef Name="position" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__firm__city__40C49C62">
+          <End Role="city" Type="Self.city" Multiplicity="1" />
+          <End Role="firm" Type="Self.firm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="city">
+              <PropertyRef Name="id_city" />
+            </Principal>
+            <Dependent Role="firm">
+              <PropertyRef Name="city" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__order_com__compo__41B8C09B">
+          <End Role="component" Type="Self.component" Multiplicity="1" />
+          <End Role="order_component" Type="Self.order_component" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="component">
+              <PropertyRef Name="id_component" />
+            </Principal>
+            <Dependent Role="order_component">
+              <PropertyRef Name="component" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__order_com__order__42ACE4D4">
+          <End Role="ordr" Type="Self.ordr" Multiplicity="1" />
+          <End Role="order_component" Type="Self.order_component" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ordr">
+              <PropertyRef Name="id_ordr" />
+            </Principal>
+            <Dependent Role="order_component">
+              <PropertyRef Name="order" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ordr__client__43A1090D">
+          <End Role="client" Type="Self.client" Multiplicity="1" />
+          <End Role="ordr" Type="Self.ordr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="client">
+              <PropertyRef Name="id_client" />
+            </Principal>
+            <Dependent Role="ordr">
+              <PropertyRef Name="client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ordr__employee__4589517F">
+          <End Role="employee" Type="Self.employee" Multiplicity="1" />
+          <End Role="ordr" Type="Self.ordr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="id_employee" />
+            </Principal>
+            <Dependent Role="ordr">
+              <PropertyRef Name="employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__pc__pc_type__467D75B8">
+          <End Role="pc_type" Type="Self.pc_type" Multiplicity="1" />
+          <End Role="pc" Type="Self.pc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pc_type">
+              <PropertyRef Name="id_pc_type" />
+            </Principal>
+            <Dependent Role="pc">
+              <PropertyRef Name="pc_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__pc__producer__477199F1">
+          <End Role="producer" Type="Self.producer" Multiplicity="1" />
+          <End Role="pc" Type="Self.pc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="producer">
+              <PropertyRef Name="id_produced" />
+            </Principal>
+            <Dependent Role="pc">
+              <PropertyRef Name="producer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_component_install_transmission_component_install">
+          <End Role="transmission_component_install" Type="Self.transmission_component_install" Multiplicity="1" />
+          <End Role="component_install" Type="Self.component_install" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="transmission_component_install">
+              <PropertyRef Name="id_transmission_component_install" />
+            </Principal>
+            <Dependent Role="component_install">
+              <PropertyRef Name="transmission_component_install" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_component_install_warranty">
+          <End Role="warranty" Type="Self.warranty" Multiplicity="1" />
+          <End Role="component_install" Type="Self.component_install" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="warranty">
+              <PropertyRef Name="id_warranty" />
+            </Principal>
+            <Dependent Role="component_install">
+              <PropertyRef Name="warranty" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_delivery_ordr">
+          <End Role="ordr" Type="Self.ordr" Multiplicity="1" />
+          <End Role="delivery" Type="Self.delivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ordr">
+              <PropertyRef Name="id_ordr" />
+            </Principal>
+            <Dependent Role="delivery">
+              <PropertyRef Name="order" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ordr_pc">
+          <End Role="pc" Type="Self.pc" Multiplicity="1" />
+          <End Role="ordr" Type="Self.ordr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pc">
+              <PropertyRef Name="id_pc" />
+            </Principal>
+            <Dependent Role="ordr">
+              <PropertyRef Name="pc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_transmission_component_install_component_on_firm">
+          <End Role="component_on_firm" Type="Self.component_on_firm" Multiplicity="1" />
+          <End Role="transmission_component_install" Type="Self.transmission_component_install" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="component_on_firm">
+              <PropertyRef Name="id_component_on_firm" />
+            </Principal>
+            <Dependent Role="transmission_component_install">
+              <PropertyRef Name="component_on_firm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="course_work_ModelStoreContainer">
+          <EntitySet Name="category" EntityType="Self.category" Schema="cw" store:Type="Tables" />
+          <EntitySet Name="city" EntityType="Self.city" Schema="cw" store:Type="Tables" />
+          <EntitySet Name="client" EntityType="Self.client" Schema="cw" store:Type="Tables" />
+          <EntitySet Name="component" EntityType="Self.component" Schema="cw" store:Type="Tables" />
+          <EntitySet Name="component_install" EntityType="Self.component_install" Schema="cw" store:Type="Tables" />
+          <EntitySet Name="component_on_firm" EntityType="Self.component_on_firm" Schema="cw" store:Type="Tables" />
+          <EntitySet Name="delivery" EntityType="Self.delivery" Schema="cw" store:Type="Tables" />
+          <EntitySet Name="delivery_type" EntityType="Self.delivery_type" Schema="cw" store:Type="Tables" />
+          <EntitySet Name="employee" EntityType="Self.employee" Schema="cw" store:Type="Tables" />
+          <EntitySet Name="firm" EntityType="Self.firm" Schema="cw" store:Type="Tables" />
+          <EntitySet Name="order_component" EntityType="Self.order_component" Schema="cw" store:Type="Tables" />
+          <EntitySet Name="ordr" EntityType="Self.ordr" Schema="cw" store:Type="Tables" />
+          <EntitySet Name="pc" EntityType="Self.pc" Schema="cw" store:Type="Tables" />
+          <EntitySet Name="pc_type" EntityType="Self.pc_type" Schema="cw" store:Type="Tables" />
+          <EntitySet Name="person" EntityType="Self.person" Schema="cw" store:Type="Tables" />
+          <EntitySet Name="position" EntityType="Self.position" Schema="cw" store:Type="Tables" />
+          <EntitySet Name="producer" EntityType="Self.producer" Schema="cw" store:Type="Tables" />
+          <EntitySet Name="transmission_component_install" EntityType="Self.transmission_component_install" Schema="cw" store:Type="Tables" />
+          <EntitySet Name="warranty" EntityType="Self.warranty" Schema="cw" store:Type="Tables" />
+          <EntitySet Name="work_type" EntityType="Self.work_type" Schema="cw" store:Type="Tables" />
+          <AssociationSet Name="FK__client__person__345EC57D" Association="Self.FK__client__person__345EC57D">
+            <End Role="person" EntitySet="person" />
+            <End Role="client" EntitySet="client" />
+          </AssociationSet>
+          <AssociationSet Name="FK__component___firm__3BFFE745" Association="Self.FK__component___firm__3BFFE745">
+            <End Role="firm" EntitySet="firm" />
+            <End Role="component_on_firm" EntitySet="component_on_firm" />
+          </AssociationSet>
+          <AssociationSet Name="FK__component__categ__3552E9B6" Association="Self.FK__component__categ__3552E9B6">
+            <End Role="category" EntitySet="category" />
+            <End Role="component" EntitySet="component" />
+          </AssociationSet>
+          <AssociationSet Name="FK__component__compo__3B0BC30C" Association="Self.FK__component__compo__3B0BC30C">
+            <End Role="component" EntitySet="component" />
+            <End Role="component_on_firm" EntitySet="component_on_firm" />
+          </AssociationSet>
+          <AssociationSet Name="FK__component__emplo__382F5661" Association="Self.FK__component__emplo__382F5661">
+            <End Role="employee" EntitySet="employee" />
+            <End Role="component_install" EntitySet="component_install" />
+          </AssociationSet>
+          <AssociationSet Name="FK__component__order__39237A9A" Association="Self.FK__component__order__39237A9A">
+            <End Role="order_component" EntitySet="order_component" />
+            <End Role="component_install" EntitySet="component_install" />
+          </AssociationSet>
+          <AssociationSet Name="FK__component__produ__36470DEF" Association="Self.FK__component__produ__36470DEF">
+            <End Role="producer" EntitySet="producer" />
+            <End Role="component" EntitySet="component" />
+          </AssociationSet>
+          <AssociationSet Name="FK__component__work___3A179ED3" Association="Self.FK__component__work___3A179ED3">
+            <End Role="work_type" EntitySet="work_type" />
+            <End Role="component_install" EntitySet="component_install" />
+          </AssociationSet>
+          <AssociationSet Name="FK__delivery__delive__3CF40B7E" Association="Self.FK__delivery__delive__3CF40B7E">
+            <End Role="delivery_type" EntitySet="delivery_type" />
+            <End Role="delivery" EntitySet="delivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK__employee__firm__3DE82FB7" Association="Self.FK__employee__firm__3DE82FB7">
+            <End Role="firm" EntitySet="firm" />
+            <End Role="employee" EntitySet="employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__employee__person__3EDC53F0" Association="Self.FK__employee__person__3EDC53F0">
+            <End Role="person" EntitySet="person" />
+            <End Role="employee" EntitySet="employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__employee__positi__3FD07829" Association="Self.FK__employee__positi__3FD07829">
+            <End Role="position" EntitySet="position" />
+            <End Role="employee" EntitySet="employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__firm__city__40C49C62" Association="Self.FK__firm__city__40C49C62">
+            <End Role="city" EntitySet="city" />
+            <End Role="firm" EntitySet="firm" />
+          </AssociationSet>
+          <AssociationSet Name="FK__order_com__compo__41B8C09B" Association="Self.FK__order_com__compo__41B8C09B">
+            <End Role="component" EntitySet="component" />
+            <End Role="order_component" EntitySet="order_component" />
+          </AssociationSet>
+          <AssociationSet Name="FK__order_com__order__42ACE4D4" Association="Self.FK__order_com__order__42ACE4D4">
+            <End Role="ordr" EntitySet="ordr" />
+            <End Role="order_component" EntitySet="order_component" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ordr__client__43A1090D" Association="Self.FK__ordr__client__43A1090D">
+            <End Role="client" EntitySet="client" />
+            <End Role="ordr" EntitySet="ordr" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ordr__employee__4589517F" Association="Self.FK__ordr__employee__4589517F">
+            <End Role="employee" EntitySet="employee" />
+            <End Role="ordr" EntitySet="ordr" />
+          </AssociationSet>
+          <AssociationSet Name="FK__pc__pc_type__467D75B8" Association="Self.FK__pc__pc_type__467D75B8">
+            <End Role="pc_type" EntitySet="pc_type" />
+            <End Role="pc" EntitySet="pc" />
+          </AssociationSet>
+          <AssociationSet Name="FK__pc__producer__477199F1" Association="Self.FK__pc__producer__477199F1">
+            <End Role="producer" EntitySet="producer" />
+            <End Role="pc" EntitySet="pc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_component_install_transmission_component_install" Association="Self.FK_component_install_transmission_component_install">
+            <End Role="transmission_component_install" EntitySet="transmission_component_install" />
+            <End Role="component_install" EntitySet="component_install" />
+          </AssociationSet>
+          <AssociationSet Name="FK_component_install_warranty" Association="Self.FK_component_install_warranty">
+            <End Role="warranty" EntitySet="warranty" />
+            <End Role="component_install" EntitySet="component_install" />
+          </AssociationSet>
+          <AssociationSet Name="FK_delivery_ordr" Association="Self.FK_delivery_ordr">
+            <End Role="ordr" EntitySet="ordr" />
+            <End Role="delivery" EntitySet="delivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ordr_pc" Association="Self.FK_ordr_pc">
+            <End Role="pc" EntitySet="pc" />
+            <End Role="ordr" EntitySet="ordr" />
+          </AssociationSet>
+          <AssociationSet Name="FK_transmission_component_install_component_on_firm" Association="Self.FK_transmission_component_install_component_on_firm">
+            <End Role="component_on_firm" EntitySet="component_on_firm" />
+            <End Role="transmission_component_install" EntitySet="transmission_component_install" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="course_work_Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="id_category" />
+          </Key>
+          <Property Name="id_category" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="components" Relationship="Self.FK__component__categ__3552E9B6" FromRole="category" ToRole="component" />
+        </EntityType>
+        <EntityType Name="city">
+          <Key>
+            <PropertyRef Name="id_city" />
+          </Key>
+          <Property Name="id_city" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="firms" Relationship="Self.FK__firm__city__40C49C62" FromRole="city" ToRole="firm" />
+        </EntityType>
+        <EntityType Name="client">
+          <Key>
+            <PropertyRef Name="id_client" />
+          </Key>
+          <Property Name="id_client" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="person" Type="Int32" Nullable="false" />
+          <Property Name="registration_date" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="person1" Relationship="Self.FK__client__person__345EC57D" FromRole="client" ToRole="person" />
+          <NavigationProperty Name="ordrs" Relationship="Self.FK__ordr__client__43A1090D" FromRole="client" ToRole="ordr" />
+        </EntityType>
+        <EntityType Name="component">
+          <Key>
+            <PropertyRef Name="id_component" />
+          </Key>
+          <Property Name="id_component" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="category" Type="Int32" Nullable="false" />
+          <Property Name="producer" Type="Int32" Nullable="false" />
+          <Property Name="price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="category1" Relationship="Self.FK__component__categ__3552E9B6" FromRole="component" ToRole="category" />
+          <NavigationProperty Name="component_on_firm" Relationship="Self.FK__component__compo__3B0BC30C" FromRole="component" ToRole="component_on_firm" />
+          <NavigationProperty Name="producer1" Relationship="Self.FK__component__produ__36470DEF" FromRole="component" ToRole="producer" />
+          <NavigationProperty Name="order_component" Relationship="Self.FK__order_com__compo__41B8C09B" FromRole="component" ToRole="order_component" />
+        </EntityType>
+        <EntityType Name="component_install">
+          <Key>
+            <PropertyRef Name="id_component_install" />
+          </Key>
+          <Property Name="id_component_install" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="order_component" Type="Int32" Nullable="false" />
+          <Property Name="work_type" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="employee" Type="Int32" Nullable="false" />
+          <Property Name="end_work_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="warranty" Type="Int32" Nullable="false" />
+          <Property Name="transmission_component_install" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="employee1" Relationship="Self.FK__component__emplo__382F5661" FromRole="component_install" ToRole="employee" />
+          <NavigationProperty Name="order_component1" Relationship="Self.FK__component__order__39237A9A" FromRole="component_install" ToRole="order_component" />
+          <NavigationProperty Name="work_type1" Relationship="Self.FK__component__work___3A179ED3" FromRole="component_install" ToRole="work_type" />
+          <NavigationProperty Name="transmission_component_install1" Relationship="Self.FK_component_install_transmission_component_install" FromRole="component_install" ToRole="transmission_component_install" />
+          <NavigationProperty Name="warranty1" Relationship="Self.FK_component_install_warranty" FromRole="component_install" ToRole="warranty" />
+        </EntityType>
+        <EntityType Name="component_on_firm">
+          <Key>
+            <PropertyRef Name="id_component_on_firm" />
+          </Key>
+          <Property Name="id_component_on_firm" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="component" Type="Int32" Nullable="false" />
+          <Property Name="firm" Type="Int32" Nullable="false" />
+          <Property Name="component_count" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="component1" Relationship="Self.FK__component__compo__3B0BC30C" FromRole="component_on_firm" ToRole="component" />
+          <NavigationProperty Name="firm1" Relationship="Self.FK__component___firm__3BFFE745" FromRole="component_on_firm" ToRole="firm" />
+          <NavigationProperty Name="transmission_component_install" Relationship="Self.FK_transmission_component_install_component_on_firm" FromRole="component_on_firm" ToRole="transmission_component_install" />
+        </EntityType>
+        <EntityType Name="delivery">
+          <Key>
+            <PropertyRef Name="id_delivery" />
+          </Key>
+          <Property Name="id_delivery" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="delivery_type" Type="Int32" Nullable="false" />
+          <Property Name="transmission_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="arrival_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="is_received" Type="Int32" Nullable="false" />
+          <Property Name="price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="order" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="delivery_type1" Relationship="Self.FK__delivery__delive__3CF40B7E" FromRole="delivery" ToRole="delivery_type" />
+          <NavigationProperty Name="ordr" Relationship="Self.FK_delivery_ordr" FromRole="delivery" ToRole="ordr" />
+        </EntityType>
+        <EntityType Name="delivery_type">
+          <Key>
+            <PropertyRef Name="id_delivery_type" />
+          </Key>
+          <Property Name="id_delivery_type" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="deliveries" Relationship="Self.FK__delivery__delive__3CF40B7E" FromRole="delivery_type" ToRole="delivery" />
+        </EntityType>
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="id_employee" />
+          </Key>
+          <Property Name="id_employee" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="person" Type="Int32" Nullable="false" />
+          <Property Name="position" Type="Int32" Nullable="false" />
+          <Property Name="firm" Type="Int32" Nullable="false" />
+          <Property Name="experience" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="component_install" Relationship="Self.FK__component__emplo__382F5661" FromRole="employee" ToRole="component_install" />
+          <NavigationProperty Name="firm1" Relationship="Self.FK__employee__firm__3DE82FB7" FromRole="employee" ToRole="firm" />
+          <NavigationProperty Name="person1" Relationship="Self.FK__employee__person__3EDC53F0" FromRole="employee" ToRole="person" />
+          <NavigationProperty Name="position1" Relationship="Self.FK__employee__positi__3FD07829" FromRole="employee" ToRole="position" />
+          <NavigationProperty Name="ordrs" Relationship="Self.FK__ordr__employee__4589517F" FromRole="employee" ToRole="ordr" />
+        </EntityType>
+        <EntityType Name="firm">
+          <Key>
+            <PropertyRef Name="id_firm" />
+          </Key>
+          <Property Name="id_firm" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="city" Type="Int32" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="phone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="city1" Relationship="Self.FK__firm__city__40C49C62" FromRole="firm" ToRole="city" />
+          <NavigationProperty Name="component_on_firm" Relationship="Self.FK__component___firm__3BFFE745" FromRole="firm" ToRole="component_on_firm" />
+          <NavigationProperty Name="employees" Relationship="Self.FK__employee__firm__3DE82FB7" FromRole="firm" ToRole="employee" />
+        </EntityType>
+        <EntityType Name="order_component">
+          <Key>
+            <PropertyRef Name="id_order_component" />
+          </Key>
+          <Property Name="id_order_component" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="order" Type="Int32" Nullable="false" />
+          <Property Name="component" Type="Int32" Nullable="false" />
+          <Property Name="component_count" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="component1" Relationship="Self.FK__order_com__compo__41B8C09B" FromRole="order_component" ToRole="component" />
+          <NavigationProperty Name="component_install" Relationship="Self.FK__component__order__39237A9A" FromRole="order_component" ToRole="component_install" />
+          <NavigationProperty Name="ordr" Relationship="Self.FK__order_com__order__42ACE4D4" FromRole="order_component" ToRole="ordr" />
+        </EntityType>
+        <EntityType Name="ordr">
+          <Key>
+            <PropertyRef Name="id_ordr" />
+          </Key>
+          <Property Name="id_ordr" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="client" Type="Int32" Nullable="false" />
+          <Property Name="employee" Type="Int32" Nullable="false" />
+          <Property Name="pc" Type="Int32" Nullable="false" />
+          <Property Name="creation_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="is_completed" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="client1" Relationship="Self.FK__ordr__client__43A1090D" FromRole="ordr" ToRole="client" />
+          <NavigationProperty Name="deliveries" Relationship="Self.FK_delivery_ordr" FromRole="ordr" ToRole="delivery" />
+          <NavigationProperty Name="employee1" Relationship="Self.FK__ordr__employee__4589517F" FromRole="ordr" ToRole="employee" />
+          <NavigationProperty Name="order_component" Relationship="Self.FK__order_com__order__42ACE4D4" FromRole="ordr" ToRole="order_component" />
+          <NavigationProperty Name="pc1" Relationship="Self.FK_ordr_pc" FromRole="ordr" ToRole="pc" />
+        </EntityType>
+        <EntityType Name="pc">
+          <Key>
+            <PropertyRef Name="id_pc" />
+          </Key>
+          <Property Name="id_pc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pc_type" Type="Int32" Nullable="false" />
+          <Property Name="producer" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ordrs" Relationship="Self.FK_ordr_pc" FromRole="pc" ToRole="ordr" />
+          <NavigationProperty Name="pc_type1" Relationship="Self.FK__pc__pc_type__467D75B8" FromRole="pc" ToRole="pc_type" />
+          <NavigationProperty Name="producer1" Relationship="Self.FK__pc__producer__477199F1" FromRole="pc" ToRole="producer" />
+        </EntityType>
+        <EntityType Name="pc_type">
+          <Key>
+            <PropertyRef Name="id_pc_type" />
+          </Key>
+          <Property Name="id_pc_type" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="pcs" Relationship="Self.FK__pc__pc_type__467D75B8" FromRole="pc_type" ToRole="pc" />
+        </EntityType>
+        <EntityType Name="person">
+          <Key>
+            <PropertyRef Name="id_person" />
+          </Key>
+          <Property Name="id_person" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="first_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="last_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="phone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="clients" Relationship="Self.FK__client__person__345EC57D" FromRole="person" ToRole="client" />
+          <NavigationProperty Name="employees" Relationship="Self.FK__employee__person__3EDC53F0" FromRole="person" ToRole="employee" />
+        </EntityType>
+        <EntityType Name="position">
+          <Key>
+            <PropertyRef Name="id_position" />
+          </Key>
+          <Property Name="id_position" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="employees" Relationship="Self.FK__employee__positi__3FD07829" FromRole="position" ToRole="employee" />
+        </EntityType>
+        <EntityType Name="producer">
+          <Key>
+            <PropertyRef Name="id_produced" />
+          </Key>
+          <Property Name="id_produced" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="components" Relationship="Self.FK__component__produ__36470DEF" FromRole="producer" ToRole="component" />
+          <NavigationProperty Name="pcs" Relationship="Self.FK__pc__producer__477199F1" FromRole="producer" ToRole="pc" />
+        </EntityType>
+        <EntityType Name="transmission_component_install">
+          <Key>
+            <PropertyRef Name="id_transmission_component_install" />
+          </Key>
+          <Property Name="id_transmission_component_install" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="component_on_firm" Type="Int32" Nullable="false" />
+          <Property Name="transmission_date" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="component_install" Relationship="Self.FK_component_install_transmission_component_install" FromRole="transmission_component_install" ToRole="component_install" />
+          <NavigationProperty Name="component_on_firm1" Relationship="Self.FK_transmission_component_install_component_on_firm" FromRole="transmission_component_install" ToRole="component_on_firm" />
+        </EntityType>
+        <EntityType Name="warranty">
+          <Key>
+            <PropertyRef Name="id_warranty" />
+          </Key>
+          <Property Name="id_warranty" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="begin_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="duration" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="component_install" Relationship="Self.FK_component_install_warranty" FromRole="warranty" ToRole="component_install" />
+        </EntityType>
+        <EntityType Name="work_type">
+          <Key>
+            <PropertyRef Name="id_work_type" />
+          </Key>
+          <Property Name="id_work_type" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="component_install" Relationship="Self.FK__component__work___3A179ED3" FromRole="work_type" ToRole="component_install" />
+        </EntityType>
+        <Association Name="FK__component__categ__3552E9B6">
+          <End Role="category" Type="Self.category" Multiplicity="1" />
+          <End Role="component" Type="Self.component" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="id_category" />
+            </Principal>
+            <Dependent Role="component">
+              <PropertyRef Name="category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__firm__city__40C49C62">
+          <End Role="city" Type="Self.city" Multiplicity="1" />
+          <End Role="firm" Type="Self.firm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="city">
+              <PropertyRef Name="id_city" />
+            </Principal>
+            <Dependent Role="firm">
+              <PropertyRef Name="city" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__client__person__345EC57D">
+          <End Role="person" Type="Self.person" Multiplicity="1" />
+          <End Role="client" Type="Self.client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="person">
+              <PropertyRef Name="id_person" />
+            </Principal>
+            <Dependent Role="client">
+              <PropertyRef Name="person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ordr__client__43A1090D">
+          <End Role="client" Type="Self.client" Multiplicity="1" />
+          <End Role="ordr" Type="Self.ordr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="client">
+              <PropertyRef Name="id_client" />
+            </Principal>
+            <Dependent Role="ordr">
+              <PropertyRef Name="client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__component__compo__3B0BC30C">
+          <End Role="component" Type="Self.component" Multiplicity="1" />
+          <End Role="component_on_firm" Type="Self.component_on_firm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="component">
+              <PropertyRef Name="id_component" />
+            </Principal>
+            <Dependent Role="component_on_firm">
+              <PropertyRef Name="component" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__component__produ__36470DEF">
+          <End Role="producer" Type="Self.producer" Multiplicity="1" />
+          <End Role="component" Type="Self.component" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="producer">
+              <PropertyRef Name="id_produced" />
+            </Principal>
+            <Dependent Role="component">
+              <PropertyRef Name="producer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__order_com__compo__41B8C09B">
+          <End Role="component" Type="Self.component" Multiplicity="1" />
+          <End Role="order_component" Type="Self.order_component" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="component">
+              <PropertyRef Name="id_component" />
+            </Principal>
+            <Dependent Role="order_component">
+              <PropertyRef Name="component" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__component__emplo__382F5661">
+          <End Role="employee" Type="Self.employee" Multiplicity="1" />
+          <End Role="component_install" Type="Self.component_install" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="id_employee" />
+            </Principal>
+            <Dependent Role="component_install">
+              <PropertyRef Name="employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__component__order__39237A9A">
+          <End Role="order_component" Type="Self.order_component" Multiplicity="1" />
+          <End Role="component_install" Type="Self.component_install" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="order_component">
+              <PropertyRef Name="id_order_component" />
+            </Principal>
+            <Dependent Role="component_install">
+              <PropertyRef Name="order_component" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__component__work___3A179ED3">
+          <End Role="work_type" Type="Self.work_type" Multiplicity="1" />
+          <End Role="component_install" Type="Self.component_install" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="work_type">
+              <PropertyRef Name="id_work_type" />
+            </Principal>
+            <Dependent Role="component_install">
+              <PropertyRef Name="work_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_component_install_transmission_component_install">
+          <End Role="transmission_component_install" Type="Self.transmission_component_install" Multiplicity="1" />
+          <End Role="component_install" Type="Self.component_install" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="transmission_component_install">
+              <PropertyRef Name="id_transmission_component_install" />
+            </Principal>
+            <Dependent Role="component_install">
+              <PropertyRef Name="transmission_component_install" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_component_install_warranty">
+          <End Role="warranty" Type="Self.warranty" Multiplicity="1" />
+          <End Role="component_install" Type="Self.component_install" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="warranty">
+              <PropertyRef Name="id_warranty" />
+            </Principal>
+            <Dependent Role="component_install">
+              <PropertyRef Name="warranty" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__component___firm__3BFFE745">
+          <End Role="firm" Type="Self.firm" Multiplicity="1" />
+          <End Role="component_on_firm" Type="Self.component_on_firm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="firm">
+              <PropertyRef Name="id_firm" />
+            </Principal>
+            <Dependent Role="component_on_firm">
+              <PropertyRef Name="firm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_transmission_component_install_component_on_firm">
+          <End Role="component_on_firm" Type="Self.component_on_firm" Multiplicity="1" />
+          <End Role="transmission_component_install" Type="Self.transmission_component_install" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="component_on_firm">
+              <PropertyRef Name="id_component_on_firm" />
+            </Principal>
+            <Dependent Role="transmission_component_install">
+              <PropertyRef Name="component_on_firm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__delivery__delive__3CF40B7E">
+          <End Role="delivery_type" Type="Self.delivery_type" Multiplicity="1" />
+          <End Role="delivery" Type="Self.delivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="delivery_type">
+              <PropertyRef Name="id_delivery_type" />
+            </Principal>
+            <Dependent Role="delivery">
+              <PropertyRef Name="delivery_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_delivery_ordr">
+          <End Role="ordr" Type="Self.ordr" Multiplicity="1" />
+          <End Role="delivery" Type="Self.delivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ordr">
+              <PropertyRef Name="id_ordr" />
+            </Principal>
+            <Dependent Role="delivery">
+              <PropertyRef Name="order" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__employee__firm__3DE82FB7">
+          <End Role="firm" Type="Self.firm" Multiplicity="1" />
+          <End Role="employee" Type="Self.employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="firm">
+              <PropertyRef Name="id_firm" />
+            </Principal>
+            <Dependent Role="employee">
+              <PropertyRef Name="firm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__employee__person__3EDC53F0">
+          <End Role="person" Type="Self.person" Multiplicity="1" />
+          <End Role="employee" Type="Self.employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="person">
+              <PropertyRef Name="id_person" />
+            </Principal>
+            <Dependent Role="employee">
+              <PropertyRef Name="person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__employee__positi__3FD07829">
+          <End Role="position" Type="Self.position" Multiplicity="1" />
+          <End Role="employee" Type="Self.employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="position">
+              <PropertyRef Name="id_position" />
+            </Principal>
+            <Dependent Role="employee">
+              <PropertyRef Name="position" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ordr__employee__4589517F">
+          <End Role="employee" Type="Self.employee" Multiplicity="1" />
+          <End Role="ordr" Type="Self.ordr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="id_employee" />
+            </Principal>
+            <Dependent Role="ordr">
+              <PropertyRef Name="employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__order_com__order__42ACE4D4">
+          <End Role="ordr" Type="Self.ordr" Multiplicity="1" />
+          <End Role="order_component" Type="Self.order_component" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ordr">
+              <PropertyRef Name="id_ordr" />
+            </Principal>
+            <Dependent Role="order_component">
+              <PropertyRef Name="order" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ordr_pc">
+          <End Role="pc" Type="Self.pc" Multiplicity="1" />
+          <End Role="ordr" Type="Self.ordr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pc">
+              <PropertyRef Name="id_pc" />
+            </Principal>
+            <Dependent Role="ordr">
+              <PropertyRef Name="pc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__pc__pc_type__467D75B8">
+          <End Role="pc_type" Type="Self.pc_type" Multiplicity="1" />
+          <End Role="pc" Type="Self.pc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pc_type">
+              <PropertyRef Name="id_pc_type" />
+            </Principal>
+            <Dependent Role="pc">
+              <PropertyRef Name="pc_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__pc__producer__477199F1">
+          <End Role="producer" Type="Self.producer" Multiplicity="1" />
+          <End Role="pc" Type="Self.pc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="producer">
+              <PropertyRef Name="id_produced" />
+            </Principal>
+            <Dependent Role="pc">
+              <PropertyRef Name="producer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="course_work_Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="categories" EntityType="Self.category" />
+          <EntitySet Name="cities" EntityType="Self.city" />
+          <EntitySet Name="clients" EntityType="Self.client" />
+          <EntitySet Name="components" EntityType="Self.component" />
+          <EntitySet Name="component_install" EntityType="Self.component_install" />
+          <EntitySet Name="component_on_firm" EntityType="Self.component_on_firm" />
+          <EntitySet Name="deliveries" EntityType="Self.delivery" />
+          <EntitySet Name="delivery_type" EntityType="Self.delivery_type" />
+          <EntitySet Name="employees" EntityType="Self.employee" />
+          <EntitySet Name="firms" EntityType="Self.firm" />
+          <EntitySet Name="order_component" EntityType="Self.order_component" />
+          <EntitySet Name="ordrs" EntityType="Self.ordr" />
+          <EntitySet Name="pcs" EntityType="Self.pc" />
+          <EntitySet Name="pc_type" EntityType="Self.pc_type" />
+          <EntitySet Name="people" EntityType="Self.person" />
+          <EntitySet Name="positions" EntityType="Self.position" />
+          <EntitySet Name="producers" EntityType="Self.producer" />
+          <EntitySet Name="transmission_component_install" EntityType="Self.transmission_component_install" />
+          <EntitySet Name="warranties" EntityType="Self.warranty" />
+          <EntitySet Name="work_type" EntityType="Self.work_type" />
+          <AssociationSet Name="FK__component__categ__3552E9B6" Association="Self.FK__component__categ__3552E9B6">
+            <End Role="category" EntitySet="categories" />
+            <End Role="component" EntitySet="components" />
+          </AssociationSet>
+          <AssociationSet Name="FK__firm__city__40C49C62" Association="Self.FK__firm__city__40C49C62">
+            <End Role="city" EntitySet="cities" />
+            <End Role="firm" EntitySet="firms" />
+          </AssociationSet>
+          <AssociationSet Name="FK__client__person__345EC57D" Association="Self.FK__client__person__345EC57D">
+            <End Role="person" EntitySet="people" />
+            <End Role="client" EntitySet="clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ordr__client__43A1090D" Association="Self.FK__ordr__client__43A1090D">
+            <End Role="client" EntitySet="clients" />
+            <End Role="ordr" EntitySet="ordrs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__component__compo__3B0BC30C" Association="Self.FK__component__compo__3B0BC30C">
+            <End Role="component" EntitySet="components" />
+            <End Role="component_on_firm" EntitySet="component_on_firm" />
+          </AssociationSet>
+          <AssociationSet Name="FK__component__produ__36470DEF" Association="Self.FK__component__produ__36470DEF">
+            <End Role="producer" EntitySet="producers" />
+            <End Role="component" EntitySet="components" />
+          </AssociationSet>
+          <AssociationSet Name="FK__order_com__compo__41B8C09B" Association="Self.FK__order_com__compo__41B8C09B">
+            <End Role="component" EntitySet="components" />
+            <End Role="order_component" EntitySet="order_component" />
+          </AssociationSet>
+          <AssociationSet Name="FK__component__emplo__382F5661" Association="Self.FK__component__emplo__382F5661">
+            <End Role="employee" EntitySet="employees" />
+            <End Role="component_install" EntitySet="component_install" />
+          </AssociationSet>
+          <AssociationSet Name="FK__component__order__39237A9A" Association="Self.FK__component__order__39237A9A">
+            <End Role="order_component" EntitySet="order_component" />
+            <End Role="component_install" EntitySet="component_install" />
+          </AssociationSet>
+          <AssociationSet Name="FK__component__work___3A179ED3" Association="Self.FK__component__work___3A179ED3">
+            <End Role="work_type" EntitySet="work_type" />
+            <End Role="component_install" EntitySet="component_install" />
+          </AssociationSet>
+          <AssociationSet Name="FK_component_install_transmission_component_install" Association="Self.FK_component_install_transmission_component_install">
+            <End Role="transmission_component_install" EntitySet="transmission_component_install" />
+            <End Role="component_install" EntitySet="component_install" />
+          </AssociationSet>
+          <AssociationSet Name="FK_component_install_warranty" Association="Self.FK_component_install_warranty">
+            <End Role="warranty" EntitySet="warranties" />
+            <End Role="component_install" EntitySet="component_install" />
+          </AssociationSet>
+          <AssociationSet Name="FK__component___firm__3BFFE745" Association="Self.FK__component___firm__3BFFE745">
+            <End Role="firm" EntitySet="firms" />
+            <End Role="component_on_firm" EntitySet="component_on_firm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_transmission_component_install_component_on_firm" Association="Self.FK_transmission_component_install_component_on_firm">
+            <End Role="component_on_firm" EntitySet="component_on_firm" />
+            <End Role="transmission_component_install" EntitySet="transmission_component_install" />
+          </AssociationSet>
+          <AssociationSet Name="FK__delivery__delive__3CF40B7E" Association="Self.FK__delivery__delive__3CF40B7E">
+            <End Role="delivery_type" EntitySet="delivery_type" />
+            <End Role="delivery" EntitySet="deliveries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_delivery_ordr" Association="Self.FK_delivery_ordr">
+            <End Role="ordr" EntitySet="ordrs" />
+            <End Role="delivery" EntitySet="deliveries" />
+          </AssociationSet>
+          <AssociationSet Name="FK__employee__firm__3DE82FB7" Association="Self.FK__employee__firm__3DE82FB7">
+            <End Role="firm" EntitySet="firms" />
+            <End Role="employee" EntitySet="employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__employee__person__3EDC53F0" Association="Self.FK__employee__person__3EDC53F0">
+            <End Role="person" EntitySet="people" />
+            <End Role="employee" EntitySet="employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__employee__positi__3FD07829" Association="Self.FK__employee__positi__3FD07829">
+            <End Role="position" EntitySet="positions" />
+            <End Role="employee" EntitySet="employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ordr__employee__4589517F" Association="Self.FK__ordr__employee__4589517F">
+            <End Role="employee" EntitySet="employees" />
+            <End Role="ordr" EntitySet="ordrs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__order_com__order__42ACE4D4" Association="Self.FK__order_com__order__42ACE4D4">
+            <End Role="ordr" EntitySet="ordrs" />
+            <End Role="order_component" EntitySet="order_component" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ordr_pc" Association="Self.FK_ordr_pc">
+            <End Role="pc" EntitySet="pcs" />
+            <End Role="ordr" EntitySet="ordrs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__pc__pc_type__467D75B8" Association="Self.FK__pc__pc_type__467D75B8">
+            <End Role="pc_type" EntitySet="pc_type" />
+            <End Role="pc" EntitySet="pcs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__pc__producer__477199F1" Association="Self.FK__pc__producer__477199F1">
+            <End Role="producer" EntitySet="producers" />
+            <End Role="pc" EntitySet="pcs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="course_work_ModelStoreContainer" CdmEntityContainer="course_work_Entities">
+          <EntitySetMapping Name="categories">
+            <EntityTypeMapping TypeName="course_work_Model.category">
+              <MappingFragment StoreEntitySet="category">
+                <ScalarProperty Name="id_category" ColumnName="id_category" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cities">
+            <EntityTypeMapping TypeName="course_work_Model.city">
+              <MappingFragment StoreEntitySet="city">
+                <ScalarProperty Name="id_city" ColumnName="id_city" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="clients">
+            <EntityTypeMapping TypeName="course_work_Model.client">
+              <MappingFragment StoreEntitySet="client">
+                <ScalarProperty Name="id_client" ColumnName="id_client" />
+                <ScalarProperty Name="person" ColumnName="person" />
+                <ScalarProperty Name="registration_date" ColumnName="registration_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="components">
+            <EntityTypeMapping TypeName="course_work_Model.component">
+              <MappingFragment StoreEntitySet="component">
+                <ScalarProperty Name="id_component" ColumnName="id_component" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="producer" ColumnName="producer" />
+                <ScalarProperty Name="price" ColumnName="price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="component_install">
+            <EntityTypeMapping TypeName="course_work_Model.component_install">
+              <MappingFragment StoreEntitySet="component_install">
+                <ScalarProperty Name="id_component_install" ColumnName="id_component_install" />
+                <ScalarProperty Name="order_component" ColumnName="order_component" />
+                <ScalarProperty Name="work_type" ColumnName="work_type" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="employee" ColumnName="employee" />
+                <ScalarProperty Name="end_work_date" ColumnName="end_work_date" />
+                <ScalarProperty Name="warranty" ColumnName="warranty" />
+                <ScalarProperty Name="transmission_component_install" ColumnName="transmission_component_install" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="component_on_firm">
+            <EntityTypeMapping TypeName="course_work_Model.component_on_firm">
+              <MappingFragment StoreEntitySet="component_on_firm">
+                <ScalarProperty Name="id_component_on_firm" ColumnName="id_component_on_firm" />
+                <ScalarProperty Name="component" ColumnName="component" />
+                <ScalarProperty Name="firm" ColumnName="firm" />
+                <ScalarProperty Name="component_count" ColumnName="component_count" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="deliveries">
+            <EntityTypeMapping TypeName="course_work_Model.delivery">
+              <MappingFragment StoreEntitySet="delivery">
+                <ScalarProperty Name="id_delivery" ColumnName="id_delivery" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="delivery_type" ColumnName="delivery_type" />
+                <ScalarProperty Name="transmission_date" ColumnName="transmission_date" />
+                <ScalarProperty Name="arrival_date" ColumnName="arrival_date" />
+                <ScalarProperty Name="is_received" ColumnName="is_received" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="order" ColumnName="order" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="delivery_type">
+            <EntityTypeMapping TypeName="course_work_Model.delivery_type">
+              <MappingFragment StoreEntitySet="delivery_type">
+                <ScalarProperty Name="id_delivery_type" ColumnName="id_delivery_type" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="employees">
+            <EntityTypeMapping TypeName="course_work_Model.employee">
+              <MappingFragment StoreEntitySet="employee">
+                <ScalarProperty Name="id_employee" ColumnName="id_employee" />
+                <ScalarProperty Name="person" ColumnName="person" />
+                <ScalarProperty Name="position" ColumnName="position" />
+                <ScalarProperty Name="firm" ColumnName="firm" />
+                <ScalarProperty Name="experience" ColumnName="experience" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="firms">
+            <EntityTypeMapping TypeName="course_work_Model.firm">
+              <MappingFragment StoreEntitySet="firm">
+                <ScalarProperty Name="id_firm" ColumnName="id_firm" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="order_component">
+            <EntityTypeMapping TypeName="course_work_Model.order_component">
+              <MappingFragment StoreEntitySet="order_component">
+                <ScalarProperty Name="id_order_component" ColumnName="id_order_component" />
+                <ScalarProperty Name="order" ColumnName="order" />
+                <ScalarProperty Name="component" ColumnName="component" />
+                <ScalarProperty Name="component_count" ColumnName="component_count" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ordrs">
+            <EntityTypeMapping TypeName="course_work_Model.ordr">
+              <MappingFragment StoreEntitySet="ordr">
+                <ScalarProperty Name="id_ordr" ColumnName="id_ordr" />
+                <ScalarProperty Name="client" ColumnName="client" />
+                <ScalarProperty Name="employee" ColumnName="employee" />
+                <ScalarProperty Name="pc" ColumnName="pc" />
+                <ScalarProperty Name="creation_date" ColumnName="creation_date" />
+                <ScalarProperty Name="is_completed" ColumnName="is_completed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pcs">
+            <EntityTypeMapping TypeName="course_work_Model.pc">
+              <MappingFragment StoreEntitySet="pc">
+                <ScalarProperty Name="id_pc" ColumnName="id_pc" />
+                <ScalarProperty Name="pc_type" ColumnName="pc_type" />
+                <ScalarProperty Name="producer" ColumnName="producer" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pc_type">
+            <EntityTypeMapping TypeName="course_work_Model.pc_type">
+              <MappingFragment StoreEntitySet="pc_type">
+                <ScalarProperty Name="id_pc_type" ColumnName="id_pc_type" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="people">
+            <EntityTypeMapping TypeName="course_work_Model.person">
+              <MappingFragment StoreEntitySet="person">
+                <ScalarProperty Name="id_person" ColumnName="id_person" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="address" ColumnName="address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="positions">
+            <EntityTypeMapping TypeName="course_work_Model.position">
+              <MappingFragment StoreEntitySet="position">
+                <ScalarProperty Name="id_position" ColumnName="id_position" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="producers">
+            <EntityTypeMapping TypeName="course_work_Model.producer">
+              <MappingFragment StoreEntitySet="producer">
+                <ScalarProperty Name="id_produced" ColumnName="id_produced" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="transmission_component_install">
+            <EntityTypeMapping TypeName="course_work_Model.transmission_component_install">
+              <MappingFragment StoreEntitySet="transmission_component_install">
+                <ScalarProperty Name="id_transmission_component_install" ColumnName="id_transmission_component_install" />
+                <ScalarProperty Name="component_on_firm" ColumnName="component_on_firm" />
+                <ScalarProperty Name="transmission_date" ColumnName="transmission_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="warranties">
+            <EntityTypeMapping TypeName="course_work_Model.warranty">
+              <MappingFragment StoreEntitySet="warranty">
+                <ScalarProperty Name="id_warranty" ColumnName="id_warranty" />
+                <ScalarProperty Name="begin_date" ColumnName="begin_date" />
+                <ScalarProperty Name="duration" ColumnName="duration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="work_type">
+            <EntityTypeMapping TypeName="course_work_Model.work_type">
+              <MappingFragment StoreEntitySet="work_type">
+                <ScalarProperty Name="id_work_type" ColumnName="id_work_type" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="price" ColumnName="price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

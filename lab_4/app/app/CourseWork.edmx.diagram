@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1373d63f6d614139b79f9d0d8f117b89" Name="Diagram1">
+        <EntityTypeShape EntityType="course_work_Model.category" Width="1.5" PointX="6" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="course_work_Model.city" Width="1.5" PointX="1.5" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="course_work_Model.client" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="course_work_Model.component" Width="1.5" PointX="8.25" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="course_work_Model.component_install" Width="1.5" PointX="12.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="course_work_Model.component_on_firm" Width="1.5" PointX="8.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="course_work_Model.delivery" Width="1.5" PointX="7.5" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="course_work_Model.delivery_type" Width="1.5" PointX="5.25" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="course_work_Model.employee" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="course_work_Model.firm" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="course_work_Model.order_component" Width="1.5" PointX="10.5" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="course_work_Model.ordr" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="course_work_Model.pc" Width="1.5" PointX="3" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="course_work_Model.pc_type" Width="1.5" PointX="0.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="course_work_Model.person" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="course_work_Model.position" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="course_work_Model.producer" Width="1.5" PointX="0.75" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="course_work_Model.transmission_component_install" Width="1.5" PointX="10.5" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="course_work_Model.warranty" Width="1.5" PointX="10.5" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="course_work_Model.work_type" Width="1.5" PointX="10.5" PointY="12.625" IsExpanded="true" />
+        <AssociationConnector Association="course_work_Model.FK__component__categ__3552E9B6" ManuallyRouted="false" />
+        <AssociationConnector Association="course_work_Model.FK__firm__city__40C49C62" ManuallyRouted="false" />
+        <AssociationConnector Association="course_work_Model.FK__client__person__345EC57D" ManuallyRouted="false" />
+        <AssociationConnector Association="course_work_Model.FK__ordr__client__43A1090D" ManuallyRouted="false" />
+        <AssociationConnector Association="course_work_Model.FK__component__compo__3B0BC30C" ManuallyRouted="false" />
+        <AssociationConnector Association="course_work_Model.FK__component__produ__36470DEF" ManuallyRouted="false" />
+        <AssociationConnector Association="course_work_Model.FK__order_com__compo__41B8C09B" ManuallyRouted="false" />
+        <AssociationConnector Association="course_work_Model.FK__component__emplo__382F5661" ManuallyRouted="false" />
+        <AssociationConnector Association="course_work_Model.FK__component__order__39237A9A" ManuallyRouted="false" />
+        <AssociationConnector Association="course_work_Model.FK__component__work___3A179ED3" ManuallyRouted="false" />
+        <AssociationConnector Association="course_work_Model.FK_component_install_transmission_component_install" ManuallyRouted="false" />
+        <AssociationConnector Association="course_work_Model.FK_component_install_warranty" ManuallyRouted="false" />
+        <AssociationConnector Association="course_work_Model.FK__component___firm__3BFFE745" ManuallyRouted="false" />
+        <AssociationConnector Association="course_work_Model.FK_transmission_component_install_component_on_firm" ManuallyRouted="false" />
+        <AssociationConnector Association="course_work_Model.FK__delivery__delive__3CF40B7E" ManuallyRouted="false" />
+        <AssociationConnector Association="course_work_Model.FK_delivery_ordr" ManuallyRouted="false" />
+        <AssociationConnector Association="course_work_Model.FK__employee__firm__3DE82FB7" ManuallyRouted="false" />
+        <AssociationConnector Association="course_work_Model.FK__employee__person__3EDC53F0" ManuallyRouted="false" />
+        <AssociationConnector Association="course_work_Model.FK__employee__positi__3FD07829" ManuallyRouted="false" />
+        <AssociationConnector Association="course_work_Model.FK__ordr__employee__4589517F" ManuallyRouted="false" />
+        <AssociationConnector Association="course_work_Model.FK__order_com__order__42ACE4D4" ManuallyRouted="false" />
+        <AssociationConnector Association="course_work_Model.FK_ordr_pc" ManuallyRouted="false" />
+        <AssociationConnector Association="course_work_Model.FK__pc__pc_type__467D75B8" ManuallyRouted="false" />
+        <AssociationConnector Association="course_work_Model.FK__pc__producer__477199F1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
