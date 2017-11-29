@@ -23,5 +23,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="org.seleniumhq.selenium:selenium-java:3.7.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="KotlinJavaRuntime" level="project" />
   </component>
 </module>
