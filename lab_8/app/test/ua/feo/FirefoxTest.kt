@@ -8,6 +8,7 @@ import org.openqa.selenium.JavascriptExecutor
 import org.openqa.selenium.Keys
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.chrome.ChromeDriver
+import org.openqa.selenium.firefox.FirefoxDriver
 import org.openqa.selenium.support.ui.Select
 import ua.feo.data.*
 import java.util.concurrent.TimeUnit
@@ -21,7 +22,7 @@ class FirefoxTest {
 
     @Throws(Exception::class)
     @Before fun setUp() {
-        driver = ChromeDriver()
+        driver = FirefoxDriver()
         baseUrl = "https://prometheus.org.ua/"
         driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS)
     }
@@ -136,7 +137,7 @@ class FirefoxTest {
         get(baseUrl)
         val cookies = manage().cookies
         cookies.forEach { c -> println(c.name) }
-        assertNotEquals(0, cookies.size.toLong())
+        assertNotEquals(0, cookies.size)
     }
 
     @Throws(Exception::class)
@@ -144,7 +145,7 @@ class FirefoxTest {
         get(baseUrl)
         manage().deleteAllCookies()
         val cookies = manage().cookies
-        assertEquals(0, cookies.size.toLong())
+        assertEquals(0, cookies.size)
     }
 
     @Throws(Exception::class)
@@ -153,6 +154,48 @@ class FirefoxTest {
         findElement(By.id("lst-ib")).sendKeys("prometheus")
         findElement(By.id("lst-ib")).sendKeys(Keys.ENTER)
         assertEquals("Prometheus – масові безкоштовні онлайн-курси", findElement(By.linkText("Prometheus – масові безкоштовні онлайн-курси")).text)
+    }
+
+    @Throws(Exception::class)
+    @Test fun testCountWords() = with(driver) {
+        get("https://www.google.com.ua/")
+        findElement(By.id("lst-ib")).sendKeys("testcase")
+        findElement(By.id("lst-ib")).sendKeys(Keys.ENTER)
+        findElement(By.linkText("Про Тестинг - Тестирование - Тестовый случай - Test Case")).click()
+        val text = findElement(By.tagName("body")).text.toLowerCase()
+        println("testcase : ${text.split("testcase").size - 1}")
+        println("test : ${text.split("test").size - 1}")
+        println("case : ${text.split("case").size - 1}")
+    }
+
+    @Throws(Exception::class)
+    @Test fun testSearch() = with(driver) {
+        get(baseUrl)
+        findElement(By.xpath("(//a[contains(text(),'Блог')])[2]")).click()
+        Thread.sleep(3000)
+        findElement(By.id("s")).sendKeys("kotlin")
+        findElement(By.xpath("//div/div/div/div[2]/div")).click()
+        findElement(By.id("searchsubmit")).click()
+        Thread.sleep(3000)
+        assertEquals("Not Found", driver.findElement(By.xpath("//div/div/div/div/div/div/div/div[2]")).text)
+    }
+
+    @Throws(Exception::class)
+    @Test fun testNew() = with(driver) {
+        get("http://vns.lpnu.ua/")
+        findElement(By.linkText("Log in")).click()
+        findElement(By.id("username")).sendKeys("Bohdan.Duben.PI.2015")
+        findElement(By.id("password")).sendKeys("07.01.1995")
+        findElement(By.id("loginbtn")).click()
+        findElement(By.id("action-menu-toggle-0")).click()
+        findElement(By.id("actionmenuaction-2")).click()
+        findElement(By.linkText("Редагувати інформацію")).click()
+        (0..0).forEach {
+            findElement(By.xpath("//button[@class='atto_image_button']")).click()
+            findElement(By.id("id_description_editor_atto_image_urlentry")).sendKeys("https://i.pinimg.com/736x/1d/dd/97/1ddd97b91e6f1a431c9c73fee8b79a70--pinky-pie-pony-party.jpg")
+            findElement(By.id("id_description_editor_atto_image_altentry")).sendKeys("yee")
+            findElement(By.xpath("//button[@class='atto_image_urlentrysubmit']")).click()
+        }
     }
 
 }
